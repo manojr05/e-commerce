@@ -15,3 +15,7 @@ E
 order-service/pom.xml,d/3/d3bf53ecc442740843266a635cbfe9807b992566
 c
 3order-service/src/main/java/org/ecommerce/Main.java,a/0/a05852ead19e9705f58b569320fc1f47fa34d3fd
+H
+discovery-server/pom.xml,2/c/2c58c7878e43d126fc56cae853d5b06de57d0b3e
+f
+6discovery-server/src/main/java/org/ecommerce/Main.java,2/0/2073e56c5e25d4f8da8d5a56ccedc378501d1256
