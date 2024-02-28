@@ -19,3 +19,11 @@ H
 discovery-server/pom.xml,2/c/2c58c7878e43d126fc56cae853d5b06de57d0b3e
 f
 6discovery-server/src/main/java/org/ecommerce/Main.java,2/0/2073e56c5e25d4f8da8d5a56ccedc378501d1256
+…
+Uinventory-service/src/main/java/com/inventoryservice/InventoryServiceApplication.java,1/6/165faf7b6a3fd4bc3234b08c785fd293e7c53813
+|
+Ldiscovery-server/src/main/java/org/ecommerce/DiscoveryServerApplication.java,a/b/ab77040764c4594e0298edf45677540b2e28a800
+y
+Iorder-service/src/main/java/com/orderservice/OrderServiceApplication.java,d/c/dc382563685c47780bceccb8b2ab5c2f4e00bd88
+
+Oproduct-service/src/main/java/com/productservice/ProductServiceApplication.java,5/1/51e90a98606a3c72b56b0d943a39fe894ad91a87
