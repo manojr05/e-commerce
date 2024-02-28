@@ -1,0 +1,17 @@
+
+U
+%src/main/java/org/ecommerce/Main.java,8/4/8498ae2357565424e6b7a7d8cee7092ebfb83bb6
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+G
+product-service/pom.xml,f/c/fcf146007330bb14605a232d25428bbf6aa50b7b
+e
+5product-service/src/main/java/org/ecommerce/Main.java,2/8/28cf80052be88d07bfd425b3dc9b675d5ffd530b
+I
+inventory-service/pom.xml,e/3/e347da292c40d252c508703eddff460d1f378f1c
+g
+7inventory-service/src/main/java/org/ecommerce/Main.java,a/4/a4c3550b13a7763f9ad5db85b1da3c84e0789734
+E
+order-service/pom.xml,d/3/d3bf53ecc442740843266a635cbfe9807b992566
+c
+3order-service/src/main/java/org/ecommerce/Main.java,a/0/a05852ead19e9705f58b569320fc1f47fa34d3fd
