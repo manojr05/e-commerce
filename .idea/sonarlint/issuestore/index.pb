@@ -51,9 +51,15 @@ Iinventory-service/src/main/java/com/inventoryservice/model/Inventory.java,0/a/
 Xinventory-service/src/main/java/com/inventoryservice/repository/InventoryRepository.java,0/3/03e14a19042ffd7d5545bc774391f79f19d3e904
 ˆ
 Xinventory-service/src/main/java/com/inventoryservice/controller/InventoryController.java,5/4/54822a3bc0a31d312f1b92196186733b49504bfe
-‡
-Winventory-service/src/main/java/com/inventoryservice/service/impl/InventoryService.java,3/2/3224064bfe06990f122023bc73512346ba18fa78
 ‹
 [inventory-service/src/main/java/com/inventoryservice/service/impl/InventoryServiceImpl.java,d/b/dba4dfc369de1b6237f80c95da0e1994cf1b8d17
 ‚
 Rinventory-service/src/main/java/com/inventoryservice/service/InventoryService.java,a/d/ade99f4a88db001c0e6a6e267a9ca427baa66579
+ƒ
+Sorder-service/src/main/java/com/orderservice/feign/proxy/InventoryServiceProxy.java,5/e/5e0b28d3ba938111a2af6fa759cd247d9279b988
+‰
+Yorder-service/src/main/java/com/orderservice/exception/QuantityNotAvailableException.java,a/9/a9f913009e8196984c9a42ba5f2209a74b0f66be
+Š
+Zorder-service/src/main/java/com/orderservice/exception/handler/GlobalExceptionHandler.java,a/e/ae7612b7a81774a002c5699a0167bbb67c0e2527
+‚
+Rorder-service/src/main/java/com/orderservice/exception/response/ErrorResponse.java,c/e/ce96f2812985d61017104bce1689ec69caf9c976

@@ -1,7 +1,7 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ĞÜáÙùÿÿÿÿ8ÏÕÁÒß1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ĞÜáÙùÿÿÿÿ8°ÊÅÙß1
 b
-java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(Ã—õÄûÿÿÿÿ8ßÕÁÒß1
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(Ã—õÄûÿÿÿÿ8½ÊÅÙß1
 h
-java:S1128"FRemove this unused import 'org.springframework.stereotype.Controller'.(øŠ—Öùÿÿÿÿ8âÕÁÒß1
+java:S1128"FRemove this unused import 'org.springframework.stereotype.Controller'.(øŠ—Öùÿÿÿÿ8Ë¬Úß1
