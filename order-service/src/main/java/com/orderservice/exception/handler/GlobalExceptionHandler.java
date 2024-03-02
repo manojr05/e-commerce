@@ -1,5 +1,6 @@
 package com.orderservice.exception.handler;
 
+import com.orderservice.exception.InvalidProductException;
 import com.orderservice.exception.QuantityNotAvailableException;
 import com.orderservice.exception.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
@@ -25,4 +26,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(build, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(InvalidProductException.class)
+    public ResponseEntity<Object> handleInvalidProductException(InvalidProductException exception){
+
+        ErrorResponse build = ErrorResponse.builder()
+                .errorCode(404)
+                .message(exception.getMessage())
+                .date(new Date())
+                .build();
+        return new ResponseEntity<>(build, HttpStatus.NOT_FOUND);
+    }
 }

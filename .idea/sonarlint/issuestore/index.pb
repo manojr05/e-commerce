@@ -63,3 +63,12 @@ Yorder-service/src/main/java/com/orderservice/exception/QuantityNotAvailableExce
 Zorder-service/src/main/java/com/orderservice/exception/handler/GlobalExceptionHandler.java,a/e/ae7612b7a81774a002c5699a0167bbb67c0e2527
 Ç
 Rorder-service/src/main/java/com/orderservice/exception/response/ErrorResponse.java,c/e/ce96f2812985d61017104bce1689ec69caf9c976
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+
+Oorder-service/src/main/java/com/orderservice/feign/proxy/OrderServiceProxy.java,4/1/41cebc6f2b5a68aaa74a3352fd4b66219bb939db
+Å
+Qorder-service/src/main/java/com/orderservice/feign/proxy/ProductServiceProxy.java,b/6/b60c8d23a0bb22ba012f45a0c43b0686bc033739
+É
+Sorder-service/src/main/java/com/orderservice/exception/InvalidProductException.java,b/b/bb5e05d851e7e69fd89c07ddb4891c6fd69f379f

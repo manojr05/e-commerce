@@ -32,5 +32,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll(pageRequest).toList();
     }
 
+    @Override
+    public Boolean validateSku(String sku) {
+        return productRepository.existsById(sku);
+    }
+
 
 }

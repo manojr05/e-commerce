@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LineItemDTO {
-    private String skuCode;
+    private String sku;
     private double price;
     private int quantity;
 }

@@ -2,13 +2,14 @@ package com.orderservice.service.impl;
 
 import com.orderservice.dto.request.LineItemDTO;
 import com.orderservice.dto.request.OrderRequestDTO;
+import com.orderservice.exception.InvalidProductException;
 import com.orderservice.exception.QuantityNotAvailableException;
 import com.orderservice.feign.proxy.InventoryServiceProxy;
+import com.orderservice.feign.proxy.ProductServiceProxy;
 import com.orderservice.model.LineItem;
 import com.orderservice.model.Order;
 import com.orderservice.repository.OrderRepository;
 import com.orderservice.service.OrderService;
-import jakarta.ws.rs.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -24,10 +25,11 @@ public class OrderServiceImpl implements OrderService {
 
     private final InventoryServiceProxy inventoryServiceProxy;
 
+    private final ProductServiceProxy productServiceProxy;
+
     @Override
     public Order placeOrder(OrderRequestDTO orderRequestDTO) {
-        if(!validateOrder(orderRequestDTO))
-            throw new QuantityNotAvailableException("Requested quantity not available");
+        validateOrder(orderRequestDTO);
         Order order = new Order();
         List<LineItem> lineItems = orderRequestDTO.getLineItemDTO().stream().map(this::mapLineItemDTOToLineItem).toList();
         order.setOrderLineItem(lineItems);
@@ -45,25 +47,42 @@ public class OrderServiceImpl implements OrderService {
         return LineItem.builder()
                 .id(UUID.randomUUID().toString())
                 .price(lineItemDTO.getPrice())
-                .skuCode(lineItemDTO.getSkuCode())
+                .skuCode(lineItemDTO.getSku())
                 .quantity(lineItemDTO.getQuantity())
                 .build();
     }
 
-    private boolean validateOrder(OrderRequestDTO orderRequestDTO){
+    private void validateOrder(OrderRequestDTO orderRequestDTO){
         List<LineItemDTO> lineItemDTOs = orderRequestDTO.getLineItemDTO();
-        AtomicBoolean flag= new AtomicBoolean(true);
+
+        AtomicBoolean isSkuValid= new AtomicBoolean(true);
         lineItemDTOs.forEach(lineItemDTO -> {
             if(!validateSku(lineItemDTO)){
-                flag.set(false);
+                isSkuValid.set(false);
             }
-
         });
-        return flag.get();
+
+        if(!isSkuValid.get()){
+            throw new InvalidProductException("Requested product does not exist");
+        }
+
+        AtomicBoolean isInventoryPresent= new AtomicBoolean(true);
+        lineItemDTOs.forEach(lineItemDTO -> {
+            if(!validateInventory(lineItemDTO)){
+                isInventoryPresent.set(false);
+            }
+        });
+        if(!isInventoryPresent.get()){
+            throw new QuantityNotAvailableException("Requested quantity not available");
+        }
+    }
+
+    private boolean validateInventory(LineItemDTO lineItemDTO){
+        return Boolean.TRUE.equals(inventoryServiceProxy.isInStock(lineItemDTO.getSku(), lineItemDTO.getQuantity()).getBody());
     }
 
     private boolean validateSku(LineItemDTO lineItemDTO){
-        return Boolean.TRUE.equals(inventoryServiceProxy.isInStock(lineItemDTO.getSkuCode(), lineItemDTO.getQuantity()).getBody());
+        return Boolean.TRUE.equals(productServiceProxy.validateSku(lineItemDTO.getSku()).getBody());
     }
 
 }

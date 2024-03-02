@@ -10,4 +10,6 @@ public interface ProductService {
     Product createProduct(ProductRequestDTO productRequestDTO);
 
     List<Product> getAllProduct(PageRequest pageRequest);
+
+    Boolean validateSku(String sku);
 }

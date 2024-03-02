@@ -15,7 +15,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 public class Product {
     @Id
-    @Field("id")
     private String sku;
     private String name;
     private String description;

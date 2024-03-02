@@ -35,4 +35,10 @@ public class ProductController {
                 .body(productService.getAllProduct(pageRequest));
     }
 
+    @GetMapping("/{sku}")
+    public  ResponseEntity<Boolean> validateSku(@PathVariable("sku") String sku){
+        log.debug("Received request to validate sku: {}", sku);
+        return ResponseEntity.ok()
+                .body(productService.validateSku(sku));
+    }
 }
