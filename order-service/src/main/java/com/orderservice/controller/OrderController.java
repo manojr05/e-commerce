@@ -3,6 +3,7 @@ package com.orderservice.controller;
 import com.orderservice.dto.request.OrderRequestDTO;
 import com.orderservice.model.Order;
 import com.orderservice.service.OrderService;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

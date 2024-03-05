@@ -66,9 +66,11 @@ Rorder-service/src/main/java/com/orderservice/exception/response/ErrorResponse.j
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-
-Oorder-service/src/main/java/com/orderservice/feign/proxy/OrderServiceProxy.java,4/1/41cebc6f2b5a68aaa74a3352fd4b66219bb939db
 Å
 Qorder-service/src/main/java/com/orderservice/feign/proxy/ProductServiceProxy.java,b/6/b60c8d23a0bb22ba012f45a0c43b0686bc033739
 É
 Sorder-service/src/main/java/com/orderservice/exception/InvalidProductException.java,b/b/bb5e05d851e7e69fd89c07ddb4891c6fd69f379f
+C
+api-gateway/pom.xml,2/b/2bfa2b108f2439e99e004f4085b58c22cf995f73
+r
+Bapi-gateway/src/main/java/org/ecommerce/ApiGatewayApplication.java,b/3/b38da5ca43532830cc67b8e2828f70473ec1b48b
