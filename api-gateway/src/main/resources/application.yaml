@@ -16,6 +16,8 @@ spring:
           enabled: true
           lowerCaseServiceId: true
       routes:
+
+#        product service route
         - id: product-service
           uri: lb://product-service
           predicates:
@@ -24,6 +26,7 @@ spring:
             - PrefixPath=/api
             - AddResponseHeader=X-Powered-By,e-commerce gateway service
 
+#        order service route
         - id: order-service
           uri: lb://order-service
           predicates:
@@ -32,6 +35,7 @@ spring:
             - PrefixPath=/api
             - AddResponseHeader=X-Powered-By,e-commerce gateway service
 
+#        inventory service route
         - id: inventory-service
           uri: lb://inventory-service
           predicates:
@@ -39,3 +43,33 @@ spring:
           filters:
             - PrefixPath=/api
             - AddResponseHeader=X-Powered-By,e-commerce gateway service
+
+#        discovery server route
+        - id: discovery-server
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/web
+          filters:
+            - SetPath=/
+
+#        discovery server static contents route
+        - id: discovery-server-static
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/**
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/e-commerce
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+  jwt:
+    auth:
+      converter:
+        resource-id: e-commerce-gateway
+        principal-attribute: principal_username
+
+logging:
+  level:
+    org.springframework.security: DEBUG

@@ -74,3 +74,11 @@ C
 api-gateway/pom.xml,2/b/2bfa2b108f2439e99e004f4085b58c22cf995f73
 r
 Bapi-gateway/src/main/java/org/ecommerce/ApiGatewayApplication.java,b/3/b38da5ca43532830cc67b8e2828f70473ec1b48b
+r
+Bapi-gateway/src/main/java/org/ecommerce/config/SecurityConfig.java,b/3/b307ed2ee2be0a510aa37af8128627a3643e0671
+|
+Lapi-gateway/src/main/java/org/ecommerce/security/JwtConverterProperties.java,3/e/3ef24d02245e85a472ae50dabcc29640ab2bffea
+r
+Bapi-gateway/src/main/java/org/ecommerce/security/JwtConverter.java,0/b/0b338347fc1f5a19736af7c36d13a465aa021422
+t
+Dapi-gateway/src/main/java/org/ecommerce/security/SecurityConfig.java,a/b/abfbd8551faed832d3046b4dc7033d303037f349
