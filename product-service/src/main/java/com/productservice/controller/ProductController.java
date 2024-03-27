@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,12 +22,14 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<Product> createProduct(@RequestBody ProductRequestDTO productRequestDTO){
         log.debug("Received request to create product: {}", productRequestDTO);
         return new ResponseEntity<>(productService.createProduct(productRequestDTO), HttpStatus.CREATED);
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<List<Product>> getAllProducts(@RequestParam(defaultValue = "0") int page,
                                                         @RequestParam(defaultValue = "10") int size){
         log.debug("Received request to get all products with page: {} and size: {}", page, size);
@@ -36,6 +39,7 @@ public class ProductController {
     }
 
     @GetMapping("/{sku}")
+    @PreAuthorize("hasAnyRole('user','admin')")
     public  ResponseEntity<Boolean> validateSku(@PathVariable("sku") String sku){
         log.debug("Received request to validate sku: {}", sku);
         return ResponseEntity.ok()

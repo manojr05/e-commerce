@@ -9,6 +9,19 @@ eureka:
 spring:
   application:
     name: api-gateway
+  main:
+    allow-bean-definition-overriding: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9090/realms/e-commerce/protocol/openid-connect/certs
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:9090/realms/ecommerce
+
   cloud:
     gateway:
       discovery:
@@ -58,18 +71,6 @@ spring:
           predicates:
             - Path=/eureka/**
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/e-commerce
-          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
-  jwt:
-    auth:
-      converter:
-        resource-id: e-commerce-gateway
-        principal-attribute: principal_username
-
-logging:
-  level:
-    org.springframework.security: DEBUG
+#logging:
+#  level:
+#    root: DEBUG
