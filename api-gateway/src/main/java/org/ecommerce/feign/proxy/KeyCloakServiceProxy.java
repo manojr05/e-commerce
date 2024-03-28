@@ -1,25 +1,25 @@
 package org.ecommerce.feign.proxy;
 
+import feign.Headers;
+import org.ecommerce.config.FormFeignEncoderConfig;
 import org.ecommerce.feign.request.MapRoleRequestBody;
 import org.ecommerce.feign.request.RegisterUserFeignRequestDTO;
+import org.ecommerce.feign.request.TokenRequestForm;
 import org.ecommerce.feign.response.KeyCloakTokenResponse;
 import org.ecommerce.feign.response.KeycloakUserDetails;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "keycloak-service", url = "localhost:9090")
+@FeignClient(name = "keycloak-service", url = "http://localhost:9090", configuration = FormFeignEncoderConfig.class)
 public interface KeyCloakServiceProxy {
 
-    @PostMapping(value = "/realms/e-commerce/protocol/openid-connect/token", consumes = "application/x-www-form-urlencoded")
-    ResponseEntity<KeyCloakTokenResponse> getToken(@RequestParam("grant_type") String grantType,
-                                                   @RequestParam("client_id") String clientId,
-                                                   @RequestParam("username") String username,
-                                                   @RequestParam("password") String password,
-                                                   @RequestParam("client_secret") String clientSecret);
+    @PostMapping(value = "/realms/e-commerce/protocol/openid-connect/token", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    ResponseEntity<KeyCloakTokenResponse> getToken(@RequestBody TokenRequestForm tokenRequestForm);
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/admin/realms/{realm}/users", consumes = "application/json")

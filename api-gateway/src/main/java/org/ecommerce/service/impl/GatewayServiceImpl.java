@@ -7,6 +7,7 @@ import org.ecommerce.dto.request.RegisterUserRequestDTO;
 import org.ecommerce.feign.proxy.KeyCloakServiceProxy;
 import org.ecommerce.feign.request.MapRoleRequestBody;
 import org.ecommerce.feign.request.RegisterUserFeignRequestDTO;
+import org.ecommerce.feign.request.TokenRequestForm;
 import org.ecommerce.feign.response.KeyCloakTokenResponse;
 import org.ecommerce.feign.response.KeycloakUserDetails;
 import org.ecommerce.service.GatewayService;
@@ -52,7 +53,8 @@ public class GatewayServiceImpl implements GatewayService {
     @Override
     public void registerUser(RegisterUserRequestDTO registerUserDto) {
         String token;
-        ResponseEntity<KeyCloakTokenResponse> tokenResponse = keyCloakServiceProxy.getToken("password", clientId, adminUsername, adminPassword, clientSecret);
+        ResponseEntity<KeyCloakTokenResponse> tokenResponse = keyCloakServiceProxy.getToken(getTokenRequestForm());
+
         if(tokenResponse.getBody()!=null)
             token=tokenResponse.getBody().getAccessToken();
         else throw new BadRequestException("Error wile retrieving admin token");
@@ -67,6 +69,16 @@ public class GatewayServiceImpl implements GatewayService {
         list.add(new MapRoleRequestBody(keycloakUserDetails.getId(), userRoleName));
 
         keyCloakServiceProxy.assignUserRoleToUser(token, list, realm, userRoleUUID, clientUUId);
+    }
+
+    private TokenRequestForm getTokenRequestForm(){
+        TokenRequestForm tokenRequestForm = new TokenRequestForm();
+        tokenRequestForm.setUsername(adminUsername);
+        tokenRequestForm.setPassword(adminPassword);
+        tokenRequestForm.setClientId(clientId);
+        tokenRequestForm.setGrantType("password");
+        tokenRequestForm.setClientSecret(clientSecret);
+        return tokenRequestForm;
     }
 
     private RegisterUserFeignRequestDTO mapRegisterDto(RegisterUserRequestDTO registerUserDto){

@@ -90,3 +90,11 @@ y
 Iapi-gateway/src/main/java/org/ecommerce/controller/GatewayController.java,0/2/02a06ca0586d8197dbb461cb169e404fb330d2ef
 |
 Lapi-gateway/src/main/java/org/ecommerce/service/impl/GatewayServiceImpl.java,c/5/c590d86f04264b869398e86ea0cea923a83baa7b
+r
+Bapi-gateway/src/main/java/org/ecommerce/config/SecurityConfig.java,b/3/b307ed2ee2be0a510aa37af8128627a3643e0671
+z
+Japi-gateway/src/main/java/org/ecommerce/config/FormFeignEncoderConfig.java,f/0/f089721b229b404c07cab5969a115368ab1d69fc
+{
+Kapi-gateway/src/main/java/org/ecommerce/feign/request/TokenRequestForm.java,2/7/272bbdcf21e4f1df226b8f2be878c09d7cdcde21
+Å
+Qapi-gateway/src/main/java/org/ecommerce/feign/response/KeyCloakTokenResponse.java,7/9/795931d9ead39a684740d0f6c5b6e95a39761d7d
