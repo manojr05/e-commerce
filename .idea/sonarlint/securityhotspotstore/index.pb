@@ -82,3 +82,5 @@ Dapi-gateway/src/main/java/org/ecommerce/security/SecurityConfig.java,a/b/abfbd
 Mproduct-service/src/main/java/com/productservice/security/SecurityConfig.java,9/8/98a451d5bce221e2d23dc366fccf6ded37a2a3a7
 {
 Kproduct-service/src/main/java/com/productservice/security/JwtConverter.java,5/1/51d756f416cd9d432a4259664e9fab8dbfddb81e
+}
+Mapi-gateway/src/main/java/org/ecommerce/feign/proxy/KeyCloakServiceProxy.java,d/1/d1960b19867b79bb1ebc015ec5174f8e08f35bad
