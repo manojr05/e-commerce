@@ -80,7 +80,8 @@ keycloak:
   admin:
     username: admin
     password: admin@123
-  client-id: 77c8da3e-c4e8-47a3-a52b-5abfeef28ec7
+  client-id: e-commerce-gateway
+  client-uuid: 77c8da3e-c4e8-47a3-a52b-5abfeef28ec7
   client-secret: OI15ciaIBGHVA94tN2PZQ4WZ89cLOeJT
   realm: e-commerce
   user-role-uuid: bf549301-c232-458a-b7d4-cca3fce58909

@@ -6,16 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
-    public static final String ADMIN = "admin";
-    public static final String USER = "user";
 
     @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
     private String jwkSetUri;
@@ -25,7 +21,7 @@ public class SecurityConfig {
 
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                                auth.anyRequest().permitAll());
+                                auth.anyRequest().authenticated());
 
         http.oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt ->
                 jwt.jwkSetUri(jwkSetUri)));

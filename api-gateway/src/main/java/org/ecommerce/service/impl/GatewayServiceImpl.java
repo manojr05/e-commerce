@@ -10,11 +10,9 @@ import org.ecommerce.feign.request.RegisterUserFeignRequestDTO;
 import org.ecommerce.feign.response.KeyCloakTokenResponse;
 import org.ecommerce.feign.response.KeycloakUserDetails;
 import org.ecommerce.service.GatewayService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +32,9 @@ public class GatewayServiceImpl implements GatewayService {
 
     @Value("${keycloak.client-id}")
     private String clientId;
+
+    @Value("${keycloak.client-uuid}")
+    private String clientUUId;
 
     @Value("${keycloak.client-secret}")
     private String clientSecret;
@@ -65,7 +66,7 @@ public class GatewayServiceImpl implements GatewayService {
         List<MapRoleRequestBody> list = new ArrayList<>();
         list.add(new MapRoleRequestBody(keycloakUserDetails.getId(), userRoleName));
 
-        keyCloakServiceProxy.assignUserRoleToUser(token, list, realm, userRoleUUID, clientId);
+        keyCloakServiceProxy.assignUserRoleToUser(token, list, realm, userRoleUUID, clientUUId);
     }
 
     private RegisterUserFeignRequestDTO mapRegisterDto(RegisterUserRequestDTO registerUserDto){
